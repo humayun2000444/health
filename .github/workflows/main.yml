@@ -10,11 +10,14 @@ jobs:
         uses: actions/checkout@v2
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests  \
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+         node-version: 15
       
       - name: Cypress run
         uses: cypress-io/github-action@v4
         with:
-         run: npm i -D cypress
          working-directory: ./frontend
          build: npm run build
          start: npm start
